@@ -6,9 +6,9 @@ from layout.tag.tag_data.layout import row_details
 tag_layout = html.Div(
     [
         row_details,
-        html.Div(className="tag_spacer"),
-        buttons_array,
+        # html.Div(className="tag_spacer"),
+        # buttons_array,
     ],
     id="tag_layout",
-    className="base_layout",
+    style={"background-color": "green", 'height': '100%'}
 )

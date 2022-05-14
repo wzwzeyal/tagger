@@ -3,7 +3,6 @@ import dash_bootstrap_components as dbc
 
 status_layout = html.Div(
     [
-        # html.Div("Test", style={'border': 'solid',}),
         html.H4(
             [
                 html.Span(
@@ -30,7 +29,7 @@ status_layout = html.Div(
             {
                 "flex": 0.95,
                 'margin-left': '2rem',
-                'background-color': '#ffffff',
+                'background-color': '#5a5a5a',
                 # 'height': 20,
                 # 'border': 'solid',
                 'height': '6px'
@@ -38,4 +37,9 @@ status_layout = html.Div(
         ),
     ],
     id="status_layout",
+    style={
+        'display': 'flex',
+        'align-items': 'center',
+        'padding': '1rem',
+    }
 )

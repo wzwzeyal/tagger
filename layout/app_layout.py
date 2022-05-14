@@ -1,6 +1,9 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
+from layout.Annotate.layout import annotate_layout
+from layout.Dataset.layout import dataset_layout
+from layout.Navbar.layout import navbar
 from layout.header.layout import header_layout
 from layout.status.layout import status_layout
 from layout.table.layout import table_layout
@@ -37,7 +40,7 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink("Annotate", href="/", active="exact"),
-                dbc.NavLink("Page 1", href="/page-1", active="exact"),
+                dbc.NavLink("Page 1", href="/page-2", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -53,21 +56,17 @@ content = html.Div(id="page-content", children=[], style=CONTENT_STYLE)
 def create_layout():
     layout = html.Div(
         [
-           dcc.Location(id="url"),
+            dcc.Location(id="url", pathname="/annotate"),
 
-           sidebar,
+            navbar,
 
-           # html.Div("Test", style=CONTENT_STYLE)
+            # sidebar,
 
-           content,
+            annotate_layout,
 
-           table_layout,
+            dataset_layout,
 
-            # header_layout,
-            #
-            # tag_layout,
-            #
-            # status_layout,
+            status_layout,
             #
             # table_layout,
         ],

@@ -58,6 +58,8 @@ def create_layout():
         [
             dcc.Location(id="url", pathname="/annotate"),
 
+            html.Div(id="current-row"),
+
             navbar,
 
             # sidebar,

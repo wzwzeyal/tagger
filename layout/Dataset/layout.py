@@ -32,7 +32,7 @@ table_body = [html.Tr([
                 html.Td(row[5], style=col_style), # copy_text
                 html.Td(row[7], style=col_style), # random1
                 html.Td(row[8], style=col_style), # random2
-                # dcc.Markdown(f'[Annotate](/annotate={row[4]}) class="nav-link"', className="nav-link"),
+                dcc.Markdown(f'[Annotate2](/annotate={row[4]})'),
                 html.Td(
                     dbc.NavLink("Annotate", href=f"/annotate={row[4]}", active="exact", ),
                     style={'max-width': '20px'}

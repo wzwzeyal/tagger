@@ -43,6 +43,7 @@ def render_page_content(*args):
         elif 'but' in button_id or 'Untagged' in button_id:
             # handle tag button click
             sql_update(button_id, current_tag_id)
+            update_dataset()
             untagged_data = get_next_untagged()
             return annotate_layout_style, hidden_style, untagged_data['tag_id']
         elif 'url' in button_id:
@@ -128,6 +129,9 @@ def render_page_content(*args):
 @app.callback(
     Output('left-textarea-example', 'value'),
     Output('right-textarea-example', 'value'),
+    Output('Text1', 'children'),
+    Output('Text2', 'children'),
+    Output('Text3', 'children'),
 
     # tag_buttons_input,
     Input("current-tag-id", "children"), # -1
@@ -138,4 +142,7 @@ def on_current_tag_id_change(current_tag_id):
     return (
         current_tag["comment"],
         current_tag["reverse"],
+        current_tag["copy_text"],
+        current_tag["random1"],
+        current_tag["random2"],
     )

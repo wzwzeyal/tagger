@@ -34,6 +34,7 @@ def sql_update(button_id, table_id):
         print(f'[sql_update]: sql_str: {sql_str}')
         print(f'[sql_update]: text(sql_str): {text(sql_str)}')
         res = connection.execute(text(sql_str))
+        return res
 
 
 def sql_count(where_clause=""):

@@ -101,6 +101,7 @@ body{
 table {
     border-collapse: collapse;
     text-align: left;
+    table-layout: auto;
 }
 
 table th {
@@ -109,9 +110,29 @@ table th {
     letter-spacing: 0.05rem;
 }
 
+
+
 table tr:nth-child(even){
     background-color: #FCFCFC;
 }
+
+/*LEFT*/
+table tr td:nth-child(2){
+    max-width: 30em;
+    overflow: hidden;
+    direction: rtl;
+    text-align: right;
+}
+
+/*RIGHT*/
+table tr td:nth-child(3){
+    max-width: 30em;
+    overflow: hidden;
+    direction: rtl;
+    text-align: right;
+}
+
+
 
 /*table thead {*/
 /*    background-color: #ffffff;*/

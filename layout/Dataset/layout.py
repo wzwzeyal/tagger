@@ -11,9 +11,9 @@ def update_datset_table():
     data_df.sort_values(by='tag_id', inplace=True)
     data_df.set_index('tag_id', inplace=True, drop=False)
 
-    data_df = data_df.head(30)
-
     print(f'[update_datset_table]: : read data_df')
+
+    data_df = data_df.head(37)
 
     table_header = [
         html.Thead(

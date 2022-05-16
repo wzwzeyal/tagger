@@ -77,10 +77,13 @@ def update_datset_table():
             }
         ),
 
-        dcc.Loading(
-            id="loading-1",
-            type="default",
-            children=dbc.Table(table_header + table_body, id='dataset-table'),
+        html.Div(
+            # dbc.Table(table_header,),
+            dbc.Table(table_header + table_body, id='dataset-table'),
+            style={
+                    'height': 'calc(75vh)',
+                    'overflow': 'auto',
+                  }
         ),
 
     ]

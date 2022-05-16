@@ -4,11 +4,11 @@ import dash_bootstrap_components as dbc
 details_layout = html.Div(
     [
         dbc.Textarea(id="left-textarea-example", placeholder="1",
-                     style={'height': '40%'}
+                     style={'height': '40%', 'direction': 'rtl'}
                      ),
         html.Div(style={'height': '1rem'}),
         dbc.Textarea(id="right-textarea-example", placeholder="1",
-                     style={'height': '40%'}
+                     style={'height': '40%', 'direction': 'rtl'}
                      ),
         html.Div(style={'height': '1rem'}),
         html.Div(

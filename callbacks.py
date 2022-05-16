@@ -20,6 +20,10 @@ for item in range(len(tag_button_names)):
     Output("current-tag-id", "children"),
     Output("dataset_layout", "children"),
 
+    Output('nof-tagged-texts', 'children'),
+    Output('nof-total-texts', 'children'),
+    Output('tag-left-progress', 'value'),
+
     tag_buttons_input,
     Input("url", "pathname"),  # -2
     State("current-tag-id", "children")  # -1
@@ -38,24 +42,49 @@ def render_page_content(*args):
     hidden_style = {'display': 'none'}
     untagged_data = get_next_untagged()
 
+    nof_records = sql_count()
+    nof_tags_left = sql_count("WHERE tag='Untagged'")  # len(data_df[data_df['tag'].str.contains("Untagged")])
+    nof_tagged = nof_records - nof_tags_left
+    percent_tagged = nof_tagged / nof_records
+
     if 'annotate' in pathname:
 
         # handle special cases
         if 'but' in button_id or 'Untagged' in button_id:
             # handle tag button click
             sql_update(button_id, current_tag_id)
+            nof_records = sql_count()
+            nof_tags_left = sql_count("WHERE tag='Untagged'")  # len(data_df[data_df['tag'].str.contains("Untagged")])
+            nof_tagged = nof_records - nof_tags_left
+            percent_tagged = nof_tagged / nof_records
             untagged_data = get_next_untagged()
-            return annotate_layout_style, status_layout_style, hidden_style, untagged_data['tag_id'], no_update
+            return (
+                annotate_layout_style,
+                status_layout_style,
+                hidden_style,
+                untagged_data['tag_id'],
+                no_update,
+                str(nof_tagged),
+                str(nof_records),
+                percent_tagged * 100
+            )
         elif 'url' in button_id:
             if '=' in pathname:
                 tag_id = pathname.split("=")[1]
-                return annotate_layout_style, status_layout_style, hidden_style, tag_id, no_update
+                return (annotate_layout_style, status_layout_style, hidden_style, tag_id, no_update,
+                        str(nof_tagged),
+                        str(nof_records),
+                        percent_tagged * 100)
 
-        return annotate_layout_style, status_layout_style, hidden_style, untagged_data['tag_id'], no_update
+        return (annotate_layout_style, status_layout_style, hidden_style, untagged_data['tag_id'], no_update,
+                str(nof_tagged),
+                str(nof_records),
+                percent_tagged * 100)
 
     elif pathname == '/dataset':
         dataset = update_datset_table()
-        return (hidden_style, hidden_style, dataset_body_style, no_update, dataset)
+        return (hidden_style, hidden_style, dataset_body_style, no_update, dataset,
+                no_update, no_update, no_update)
 
     else:
         print(f'[render_page_content]: unknown pathname: {pathname}')

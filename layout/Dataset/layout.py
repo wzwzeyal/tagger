@@ -12,9 +12,9 @@ def update_datset_table():
     data_df.sort_values(by='tag_id', inplace=True)
     data_df.set_index('tag_id', inplace=True, drop=False)
 
-    print(f'[update_datset_table]: : read data_df')
+    print(f'[update_dataset_table]: : read data_df')
 
-    data_df = data_df.head(37)
+    # data_df = data_df.head(37)
 
     table_header = [
         html.Thead(
@@ -29,8 +29,9 @@ def update_datset_table():
                     html.Th("Text3"),  # 9
                     html.Th(""),
                 ]
-            )
-        )
+            ),
+            id='table-head',
+        ),
     ]
 
     print(f'[update_datset_table]: : header')
@@ -76,15 +77,20 @@ def update_datset_table():
             }
         ),
 
-        dbc.Table(table_header + table_body, id='dataset-table'),
+        dcc.Loading(
+            id="loading-1",
+            type="default",
+            children=dbc.Table(table_header + table_body, id='dataset-table'),
+        ),
+
     ]
 
 
 dataset_body_style = {
-    'height': '90vh',
+    # 'height': '90vh',
     'display': 'grid',
-    'justifyContent': 'center',
-    'alignItems': 'center',
+    'justify_content': 'center',
+    # 'align_items': 'center',
     'padding': '1rem',
 
 }

@@ -98,7 +98,31 @@ body{
     align-self: center;
 }
 
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
 
+table th {
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    letter-spacing: 0.05rem;
+}
+
+table tr:nth-child(even){
+    background-color: #FCFCFC;
+}
+
+/*table thead {*/
+/*    background-color: #ffffff;*/
+/*    position: sticky;*/
+/*    top: 4rem;*/
+/*}*/
+
+/*#Navbar {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*}*/
 
 /*#row_additional_data {*/
 /*    display: flex;*/

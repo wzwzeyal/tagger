@@ -1,6 +1,13 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
+status_layout_style = {
+    'display': 'flex',
+    'align-items': 'center',
+    'padding': '1rem',
+}
+
+
 status_layout = html.Div(
     [
         html.H4(
@@ -37,9 +44,5 @@ status_layout = html.Div(
         ),
     ],
     id="status_layout",
-    style={
-        'display': 'flex',
-        'align-items': 'center',
-        'padding': '1rem',
-    }
+    style=status_layout_style
 )

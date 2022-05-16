@@ -14,7 +14,7 @@ def create_layout():
         [
             dcc.Location(id="url", pathname=f"/annotate"),
 
-            html.Div(id="current-tag-id"),
+            html.Div(id="current-tag-id", style={'display': 'none'}),
 
             navbar,
 

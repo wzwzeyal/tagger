@@ -6,11 +6,11 @@ navbar = dbc.Navbar(
         [
             html.A(
                 dbc.Row(
-                    dbc.Col(dbc.NavbarBrand("Tagger", className="ms-2")),
+                    dbc.Col(dbc.NavbarBrand("Tagger", className="ms-2", style={"font-size": "2rem"})),
                     align="center",
                     className="g-0",
                 ),
-                style={"textDecoration": "none"},
+                style={"textDecoration": "none",},
             ),
             dbc.Row(
                 [
@@ -45,4 +45,5 @@ navbar = dbc.Navbar(
     ),
     # dark=True,
     color="#eff2f5",
+    id="Navbar",
 )

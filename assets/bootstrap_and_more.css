@@ -106,7 +106,7 @@ table {
 
 table th {
     text-transform: uppercase;
-    padding: 0.75rem 2rem;
+    /*padding: 0.75rem 2rem;*/
     letter-spacing: 0.05rem;
 }
 
@@ -118,7 +118,7 @@ table tr:nth-child(even){
 
 /*LEFT*/
 table tr td:nth-child(2){
-    max-width: 30em;
+    max-width: 35em;
     overflow: hidden;
     direction: rtl;
     text-align: right;
@@ -126,7 +126,7 @@ table tr td:nth-child(2){
 
 /*RIGHT*/
 table tr td:nth-child(3){
-    max-width: 30em;
+    max-width: 35em;
     overflow: hidden;
     direction: rtl;
     text-align: right;

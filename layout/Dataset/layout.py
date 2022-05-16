@@ -40,7 +40,8 @@ def update_datset_table():
     # since we are adding the NavLink column we refrain using from_dataframe
     table_body = [
         html.Tbody(
-            [html.Tr([
+            [
+                html.Tr([
                 html.Td(row[4], ),  # tag_id
                 html.Td(row[1], ),  # comment
                 html.Td(row[6], ),  # tag
@@ -52,7 +53,8 @@ def update_datset_table():
                     dbc.NavLink("Annotate", href=f"/annotate={row[4]}", active="exact", ),
                 ),
 
-            ]) for row in values]
+            ]) for row in values],
+            id='table-body'
         )
     ]
     # table_body = []
@@ -61,17 +63,17 @@ def update_datset_table():
 
     print(f'[update_datset_table]: End')
 
-    return dbc.Table(
-        table_header + table_body,  # striped=True,
-        # bordered=True,
-    ),
+    return [
+        dcc.Input(id='search'),
+        dbc.Table(table_header + table_body, id='dataset-table'),
+    ]
 
 
 dataset_body_style = {
     'height': '90vh',
     'display': 'grid',
-    'justify-content': 'center',
-    'align-items': 'center',
+    'justifyContent': 'center',
+    'alignItems': 'center',
     'padding': '1rem',
 
 }

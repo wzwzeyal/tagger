@@ -2,7 +2,7 @@ from dash import Input, Output, no_update, callback_context, State
 from app import app
 from db import sql_update, sql_count, get_tag_id
 from layout.Annotate.layout import annotate_layout_style
-from layout.Dataset.layout import dataset_layout_style
+from layout.Dataset.layout import dataset_layout_style, update_datset_table
 from resources.strings import tag_button_names
 from utils import get_next_untagged
 
@@ -16,6 +16,7 @@ for item in range(len(tag_button_names)):
     Output("annotate_layout", "style"),
     Output("dataset_layout", "style"),
     Output("current-tag-id", "children"),
+    Output("dataset_layout", "children"),
 
     tag_buttons_input,
     Input("url", "pathname"), # -2
@@ -33,23 +34,22 @@ def render_page_content(*args):
 
     print(f'[render_page_content]: pathname: {pathname}')
     hidden_style = {'display': 'none'}
+    untagged_data = get_next_untagged()
 
     if 'annotate' in pathname:
-        if button_id == "":
-            # handle init
-            # handle Annotate click
-            untagged_data = get_next_untagged()
-            return annotate_layout_style, hidden_style, untagged_data['tag_id']
-        elif 'but' in button_id or 'Untagged' in button_id:
+
+        # handle special cases
+        if 'but' in button_id or 'Untagged' in button_id:
             # handle tag button click
             sql_update(button_id, current_tag_id)
-            update_dataset()
             untagged_data = get_next_untagged()
-            return annotate_layout_style, hidden_style, untagged_data['tag_id']
+            return annotate_layout_style, hidden_style, untagged_data['tag_id'], no_update
         elif 'url' in button_id:
             if '=' in pathname:
                 tag_id = pathname.split("=")[1]
-                return annotate_layout_style, hidden_style, tag_id
+                return annotate_layout_style, hidden_style, tag_id, no_update
+
+        return annotate_layout_style, hidden_style, untagged_data['tag_id'], no_update
 
         # return no_update
         # if '=' in pathname:
@@ -81,7 +81,8 @@ def render_page_content(*args):
 
 
     elif pathname == '/dataset':
-        return (hidden_style, dataset_layout_style, no_update)
+        dataset = update_datset_table()
+        return (hidden_style, dataset_layout_style, no_update, dataset)
 
 
     else:

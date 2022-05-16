@@ -2,6 +2,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 from dash import Dash, html, dcc, dash_table
 
+
 # col_style = {'max-width': '10px', 'overflow': 'hidden', 'white-space': 'nowrap'}
 
 
@@ -32,7 +33,6 @@ def update_datset_table():
         )
     ]
 
-
     print(f'[update_datset_table]: : header')
 
     values = data_df.values.tolist()
@@ -42,18 +42,18 @@ def update_datset_table():
         html.Tbody(
             [
                 html.Tr([
-                html.Td(row[4], ),  # tag_id
-                html.Td(row[1], ),  # comment
-                html.Td(row[6], ),  # tag
-                html.Td(row[2], ),  # reverse
-                html.Td(row[5], ),  # copy_text
-                html.Td(row[7], ),  # random1
-                html.Td(row[8], ),  # random2
-                html.Td(
-                    dbc.NavLink("Annotate", href=f"/annotate={row[4]}", active="exact", ),
-                ),
+                    html.Td(row[4], ),  # tag_id
+                    html.Td(row[1], ),  # comment
+                    html.Td(row[6], ),  # tag
+                    html.Td(row[2], ),  # reverse
+                    html.Td(row[5], ),  # copy_text
+                    html.Td(row[7], ),  # random1
+                    html.Td(row[8], ),  # random2
+                    html.Td(
+                        dbc.NavLink("Annotate", href=f"/annotate={row[4]}", active="exact", ),
+                    ),
 
-            ]) for row in values],
+                ]) for row in values],
             id='table-body'
         )
     ]
@@ -64,7 +64,18 @@ def update_datset_table():
     print(f'[update_datset_table]: End')
 
     return [
-        dcc.Input(id='search'),
+        html.Div(
+            [
+                html.Span('Search: ', ),
+                dcc.Input(id='search', style={'flex': '1'}),
+            ],
+            style={
+                'display': 'flex',
+                'width': '100%',
+                'gap': '10px',
+            }
+        ),
+
         dbc.Table(table_header + table_body, id='dataset-table'),
     ]
 

@@ -13,17 +13,17 @@ document.addEventListener('keyup', e => {
 
         var input, filter, table, tr, td, i, txtValue, col;
         input = document.getElementById("search");
-        filter = input.value;
+        filter = input.value.toUpperCase();
         table = document.getElementById("table-body");
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            for (col = 0; col < 5; col++) {
+            for (col = 0; col < 7; col++) {
                 td = tr[i].getElementsByTagName("td")[col];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
-                    if (txtValue.indexOf(filter) > -1) {
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                         break;
                     } else {

@@ -1,6 +1,7 @@
 from dash import Input, Output, no_update, callback_context, State
 from app import app
 from db import sql_update, sql_count, get_tag_id
+from layout.Annotate.buttons.layout import buttons_list
 from layout.Annotate.layout import annotate_layout_style
 from layout.Dataset.layout import dataset_body_style, update_datset_table
 from layout.status.layout import status_layout_style
@@ -8,9 +9,13 @@ from resources.strings import tag_button_names
 from utils import get_next_untagged
 
 tag_buttons_input = []
-for item in range(len(tag_button_names)):
+# for item in range(len(tag_button_names)):
+#     tag_buttons_input.append(
+#         Input(f'but{str(item)}', 'n_clicks'))
+for item in buttons_list:
     tag_buttons_input.append(
-        Input(f'but{str(item)}', 'n_clicks'))
+        Input(item["id"], 'n_clicks')
+    )
 
 
 @app.callback(

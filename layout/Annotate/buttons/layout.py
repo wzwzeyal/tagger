@@ -3,58 +3,62 @@ import dash_bootstrap_components as dbc
 
 from resources.strings import tag_button_names
 
-lst = []
-for item in range(20):
-    lst.append(
-        dbc.Button(
-            f'{tag_button_names[item]}',
-            id=f'but{str(item)}',
-            outline=True,
-            # className="tag_button",
-            style={
-                # "width": "120px",
-                "color": 'black',
-                'border': 'groove',
-                # "padding": "5px",
-                "margin-right": 5,
-                "margin-bottom": 3,
-                "display": "inline",
-                "border-radius": "0px"
-                # "background-color": "white",
-            },
-        ),
-    )
+buttons_list = [
+    {"id": "button1", "text": "Button 1", "color": "black", "group": 1},
+    {"id": "button2", "text": "Button 2", "color": "black", "group": 1},
 
-for item in range(20,30):
-    lst.append(
-        dbc.Button(
-            f'{tag_button_names[item]}',
-            id=f'but{str(item)}',
-            outline=True,
-            # className="tag_button",
-            style={
-                # "width": "120px",
-                "color": 'red',
-                'border': 'groove',
-                # "padding": "5px",
-                "margin-right": 5,
-                "margin-bottom": 3,
-                "display": "inline",
-                "border-radius": "0px"
-                # "background-color": "white",
-            },
-        ),
-    )
+    {"id": "button3", "text": "Button (3)", "color": "red", "group": 2},
+    {"id": "Untagged", "text": "Remove", "color": "red", "group": 2},
+]
+
+buttons1 = []
+buttons2 = []
+
+for item in buttons_list:
+    if item["group"] == 1:
+        buttons1.append(
+            dbc.Button(
+                item["text"],
+                id=f'{item["id"]}',
+                outline=True,
+
+                style={
+                    "color": item["color"],
+                    'border': 'groove',
+                    "margin-right": 5,
+                    "margin-bottom": 3,
+                    "display": "inline",
+                    "border-radius": "0px"
+                },
+            )
+        )
+    elif item["group"] == 2:
+        buttons2.append(
+            dbc.Button(
+                item["text"],
+                id=f'{item["id"]}',
+                outline=True,
+
+                style={
+                    "color": item["color"],
+                    'border': 'groove',
+                    "margin-right": 5,
+                    "margin-bottom": 3,
+                    "display": "inline",
+                    "border-radius": "0px"
+                },
+            )
+        )
 
 buttons_layout = html.Div(
     [
         html.Div(
-            lst[:20],
+            buttons1,
             style={'height': '65%', }
 
         ),
         html.Div(
-            lst[20:],
+            buttons2,
             style={'height': '35%', }
         ),
     ],

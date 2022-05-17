@@ -14,8 +14,6 @@ def update_datset_table():
 
     print(f'[update_dataset_table]: : read data_df')
 
-    # data_df = data_df.head(37)
-
     table_header = [
         html.Thead(
             html.Tr(

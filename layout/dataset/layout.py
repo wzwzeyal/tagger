@@ -4,10 +4,11 @@ from dash import Dash, html, dcc, dash_table
 
 
 # col_style = {'max-width': '10px', 'overflow': 'hidden', 'white-space': 'nowrap'}
+from layout.annotate.buttons.layout import buttons_dict
 
 
-def update_datset_table():
-    print(f'[update_datset_table]: Start')
+def update_dataset_table():
+    print(f'[update_dataset_table]: Start')
     data_df = pd.read_sql_table('test_tsv', "postgresql://postgres:postgres@localhost/test")
     data_df.sort_values(by='tag_id', inplace=True)
     data_df.set_index('tag_id', inplace=True, drop=False)
@@ -32,7 +33,7 @@ def update_datset_table():
         ),
     ]
 
-    print(f'[update_datset_table]: : header')
+    print(f'[update_dataset_table]: : header')
 
     values = data_df.values.tolist()
 
@@ -43,8 +44,8 @@ def update_datset_table():
                 html.Tr([
                     html.Td(row[4], ),  # tag_id
                     html.Td(row[1], ),  # comment
-                    html.Td(row[6], ),  # tag
-                    html.Td(row[2], ),  # reverse
+                    html.Td(row[6], ),  # reverse
+                    html.Td(row[2], ),  # tag
                     html.Td(row[5], ),  # copy_text
                     html.Td(row[7], ),  # random1
                     html.Td(row[8], ),  # random2
@@ -57,9 +58,9 @@ def update_datset_table():
         )
     ]
 
-    print(f'[update_datset_table]: : body')
+    print(f'[update_dataset_table]: : body')
 
-    print(f'[update_datset_table]: End')
+    print(f'[update_dataset_table]: End')
 
     return [
         html.Div(

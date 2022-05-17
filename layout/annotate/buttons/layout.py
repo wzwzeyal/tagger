@@ -4,36 +4,33 @@ from collections import defaultdict
 
 from resources.strings import tag_button_names
 
-
-
-buttons_list = [
-    {"id": "button1", "text": "Short", "color": "black", "group": 'group1'},
-    {"id": "button2", "text": "Long Button", "color": "black", "group": 'group1'},
-    {"id": "button3", "text": "Very Long Button Button", "color": "black", "group": 'group1'},
-    {"id": "button4", "text": "Button 4", "color": "black", "group": 'group1'},
-    {"id": "button5", "text": "Button 4", "color": "black", "group": 'group1'},
-    {"id": "button6", "text": "Button 6", "color": "black", "group": 'group1'},
-
-    {"id": "button7", "text": "Button (3)", "color": "red", "group": 'group2'},
-    {"id": "Untagged", "text": "Unknown", "color": "red", "group": 'group2'},
-]
+buttons_dict = {
+    'button1': {'text': 'short1', 'color': 'black', 'group': 'group1'},
+    'button2': {'text': 'very long', 'color': 'black', 'group': 'group1'},
+    'button3': {'text': 'very very long', 'color': 'black', 'group': 'group1'},
+    'button4': {'text': 'but4', 'color': 'black', 'group': 'group1'},
+    'button5': {'text': 'but5', 'color': 'black', 'group': 'group1'},
+    'button6': {'text': 'but6', 'color': 'black', 'group': 'group2'},
+    'Untagged': {'text': 'Remove', 'color': 'black', 'group': 'group2'},
+}
 
 buttons = defaultdict()
 
-for item in buttons_list:
-    if not item["group"] in buttons.keys():
-        buttons[item["group"]] = []
+for button_item in buttons_dict:
+    group = buttons_dict[button_item]["group"]
+    text = buttons_dict[button_item]["text"]
+    color = buttons_dict[button_item]["color"]
+    if group not in buttons.keys():
+        buttons[group] = []
 
-    buttons[item["group"]].append(
+    buttons[group].append(
         dbc.Button(
-            item["text"],
-            id=f'{item["id"]}',
+            text,
+            id=f'{button_item}',
             outline=True,
 
-
-
             style={
-                "color": item["color"],
+                "color": color,
                 'border': 'groove',
                 "margin-right": 5,
                 "margin-bottom": 3,

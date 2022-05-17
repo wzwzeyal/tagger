@@ -18,7 +18,7 @@ navbar = dbc.Navbar(
                     dbc.Collapse(
                         dbc.Nav(
                             [
-                                dbc.NavItem(dbc.NavLink("Annotate", href='/annotate')),
+                                dbc.NavItem(dbc.NavLink("Annotate", href='/annotate', active=True)),
                                 dbc.NavItem(
                                     dbc.NavLink("Dataset", href='/dataset'),
                                     # add an auto margin after page 2 to
@@ -31,6 +31,7 @@ navbar = dbc.Navbar(
                             # make sure nav takes up the full width for auto
                             # margin to get applied
                             className="w-100",
+                            style={"font-size": "1.5rem"}
                         ),
                         id="navbar-collapse",
                         is_open=False,

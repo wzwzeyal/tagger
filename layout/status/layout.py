@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 status_layout_style = {
     'display': 'flex',
     'align-items': 'center',
-    'padding': '1rem',
+    'padding-left': '1rem',
 }
 
 

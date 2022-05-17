@@ -76,12 +76,12 @@ table th {
 }
 
 table tr:nth-child(even){
-    background-color: #FCFCFC;
+    background-color: #f0f0f0;
 }
 
 /*LEFT*/
 table tr td:nth-child(2){
-    max-width: 35em;
+    max-width: 30vw;
     overflow: hidden;
     direction: rtl;
     text-align: right;
@@ -89,7 +89,7 @@ table tr td:nth-child(2){
 
 /*RIGHT*/
 table tr td:nth-child(3){
-    max-width: 35em;
+    max-width: 30vw;
     overflow: hidden;
     direction: rtl;
     text-align: right;

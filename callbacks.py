@@ -17,6 +17,12 @@ for item in buttons_list:
         Input(item["id"], 'n_clicks')
     )
 
+tag_button_output = []
+for item in buttons_list:
+    tag_button_output.append(
+        Output(item["id"], 'outline')
+    )
+
 
 @app.callback(
     Output("annotate_layout", "style"),
@@ -105,16 +111,33 @@ def render_page_content(*args):
     Output('Text2', 'children'),
     Output('Text3', 'children'),
 
-    # tag_buttons_input,
+    tag_button_output,
+
     Input("current-tag-id", "children"),  # -1
 )
 def on_current_tag_id_change(current_tag_id):
     print(f'[on_current_tag_id_change]: current_tag_id: {current_tag_id}')
     current_tag = get_tag_id(current_tag_id)
-    return (
-        current_tag["comment"],
-        current_tag["reverse"],
-        current_tag["copy_text"],
-        current_tag["random1"],
-        current_tag["random2"],
-    )
+    ctx = callback_context
+
+    outputs = [True] * len(ctx.outputs_list);
+    outputs[0] = current_tag["comment"]
+    outputs[1] = current_tag["reverse"]
+    outputs[2] = current_tag["copy_text"]
+    outputs[3] = current_tag["random1"]
+    outputs[4] = current_tag["random2"]
+
+    tag_index = len(ctx.outputs_list) - 1 # Untagged
+
+    for index, button in enumerate(buttons_list):
+        if button['id'] == current_tag['tag']:
+            tag_index = index
+            break
+
+    output_tag = 5 + tag_index
+    if output_tag > len(outputs):
+        output_tag = len(outputs) - 1
+
+    outputs[output_tag] = False
+
+    return outputs

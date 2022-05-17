@@ -4,6 +4,8 @@ from collections import defaultdict
 
 from resources.strings import tag_button_names
 
+
+
 buttons_list = [
     {"id": "button1", "text": "Short", "color": "black", "group": 'group1'},
     {"id": "button2", "text": "Long Button", "color": "black", "group": 'group1'},
@@ -28,6 +30,8 @@ for item in buttons_list:
             id=f'{item["id"]}',
             outline=True,
 
+
+
             style={
                 "color": item["color"],
                 'border': 'groove',
@@ -35,6 +39,7 @@ for item in buttons_list:
                 "margin-bottom": 3,
                 "display": "inline",
                 "border-radius": "0px"
+
             },
         )
     )

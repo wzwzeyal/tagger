@@ -5,28 +5,27 @@ from collections import defaultdict
 from resources.strings import tag_button_names
 
 buttons_dict = {
-    'button1': {'text': 'short1', 'color': 'black', 'group': 'group1'},
-    'button2': {'text': 'very long', 'color': 'black', 'group': 'group1'},
-    'button3': {'text': 'very very long', 'color': 'black', 'group': 'group1'},
-    'button4': {'text': 'but4', 'color': 'black', 'group': 'group1'},
-    'button5': {'text': 'but5', 'color': 'black', 'group': 'group1'},
-    'button6': {'text': 'but6', 'color': 'black', 'group': 'group2'},
-    'Untagged': {'text': 'Remove', 'color': 'black', 'group': 'group2'},
+    'button1': {'color': 'black', 'group': 'group1'},
+    'button2': {'color': 'black', 'group': 'group1'},
+    'button3': {'color': 'black', 'group': 'group1'},
+    'button4': {'color': 'black', 'group': 'group1'},
+    'button5': {'color': 'black', 'group': 'group1'},
+    'button6': {'color': 'black', 'group': 'group2'},
+    'Untagged': {'color': 'black', 'group': 'group2'},
 }
 
 buttons = defaultdict()
 
 for button_item in buttons_dict:
     group = buttons_dict[button_item]["group"]
-    text = buttons_dict[button_item]["text"]
     color = buttons_dict[button_item]["color"]
     if group not in buttons.keys():
         buttons[group] = []
 
     buttons[group].append(
         dbc.Button(
-            text,
-            id=f'{button_item}',
+            button_item,
+            id=button_item,
             outline=True,
 
             style={

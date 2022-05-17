@@ -1,9 +1,9 @@
 from dash import Input, Output, no_update, callback_context, State
 from app import app
 from db import sql_update, sql_count, get_tag_id
-from layout.Annotate.buttons.layout import buttons_list
-from layout.Annotate.layout import annotate_layout_style
-from layout.Dataset.layout import dataset_body_style, update_datset_table
+from layout.annotate.buttons.layout import buttons_list
+from layout.annotate.layout import annotate_layout_style
+from layout.dataset.layout import dataset_body_style, update_datset_table
 from layout.status.layout import status_layout_style
 from resources.strings import tag_button_names
 from utils import get_next_untagged

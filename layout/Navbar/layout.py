@@ -18,7 +18,7 @@ navbar = dbc.Navbar(
                     dbc.Collapse(
                         dbc.Nav(
                             [
-                                dbc.NavItem(dbc.NavLink("Annotate", href='/annotate', active=True)),
+                                dbc.NavItem(dbc.NavLink("Annotate", href='/annotate')),
                                 dbc.NavItem(
                                     dbc.NavLink("Dataset", href='/dataset'),
                                     # add an auto margin after page 2 to

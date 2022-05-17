@@ -56,7 +56,6 @@ def update_datset_table():
             id='table-body'
         )
     ]
-    # table_body = []
 
     print(f'[update_datset_table]: : body')
 
@@ -75,8 +74,9 @@ def update_datset_table():
             }
         ),
 
+        html.Br(),
+
         html.Div(
-            # dbc.Table(table_header,),
             dbc.Table(table_header + table_body, id='dataset-table'),
             style={
                     'height': 'calc(75vh)',
@@ -88,10 +88,8 @@ def update_datset_table():
 
 
 dataset_body_style = {
-    # 'height': '90vh',
     'display': 'grid',
     'justify_content': 'center',
-    # 'align_items': 'center',
     'padding': '1rem',
 
 }

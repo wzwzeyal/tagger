@@ -1,8 +1,8 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
-from layout.Annotate.buttons.layout import buttons_layout
-from layout.Annotate.details.layout import details_layout
+from layout.annotate.buttons.layout import buttons_layout
+from layout.annotate.details.layout import details_layout
 
 annotate_layout_style = {
     'display': 'flex',

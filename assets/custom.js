@@ -27,6 +27,19 @@ document.addEventListener('keyup', e => {
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        //find index of word 'in'
+                        const index = txtValue.indexOf(filter);
+
+                        //opening and closing tags
+                        const openingTag = '<span style="background-color:yellow">'
+                        const closingTag = '</span>'
+
+                        const newHTML
+                          = txtValue.slice(0, index)
+                          + openingTag + filter + closingTag
+                          + txtValue.slice(index + filter.length);
+
+                        // td.innerHTML = newHTML;
                         tr[i].style.display = "";
                         break;
                     } else {

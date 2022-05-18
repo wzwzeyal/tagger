@@ -54,6 +54,9 @@ body{
 .flex-1-border {
     flex: 1;
     border: 1px solid;
+    overflow: hidden;
+    max-width: 22vw;
+;
 }
 
 .tag_spacer {

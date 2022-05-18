@@ -16,7 +16,7 @@ details_layout = html.Div(
                 html.Div(
                     [
                         html.Span(
-                            "Text1",
+                            "Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1",
                             id="Text1",
                         ),
                         dcc.Clipboard(
@@ -31,8 +31,8 @@ details_layout = html.Div(
                     ],
                     className="flex-1-border",
                     style={"position": "relative"}),
-                html.Span("Text2", id="Text2", className="flex-1-border", ),
-                html.Span("Text3", id="Text3", className="flex-1-border", ),
+                html.Span("Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1", id="Text2", className="flex-1-border", ),
+                html.Span("Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1Text1", id="Text3", className="flex-1-border", ),
 
             ],
             id="row_additional_data",

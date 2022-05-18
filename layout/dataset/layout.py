@@ -65,8 +65,7 @@ def update_dataset_table():
     return [
         html.Div(
             [
-                html.Span('Search: ', ),
-                dcc.Input(id='search', style={'flex': '1'}),
+                dbc.Input(id='search', type="search", style={'flex': '1'}, placeholder="Search"),
             ],
             style={
                 'display': 'flex',
